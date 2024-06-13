@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container k" >
+            <div class="row" >
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"  >
+                    <h1 >Newsweek</h1>
+                </div>
+                
+
+            </div>
+
+        </div>
+        <nav >
+        <div class="container l" >
+            <div class="row" >
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"  >
+                    
+                        <ul class="nav-ul-no-bullets" >
+                            <li ><a href="index.html" class="liboja">Home</a></li>
+                            <li ><a href="hrvatska.html" class="liboja">Hrvatska</a></li>
+                            <li ><a href="svijet.html" class="liboja">Svijet</a></li>
+                            <li><a href="unos.html"  class="liboja">Administracija</a></li>
+                        </ul>
+        
+                  
+                </div>
+                
+
+            </div>
+
+         
+
+            
+
+        </div>
+    </nav>
+        
+
+    </header>
+
+
+    <section class="s1">
+
+
+        <div class="container forma">
+            <div class="row">
+                
+                
+    
+                
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"  >
+                    
+
+                    <form method="post" action="skripta.php" enctype="multipart/form-data">
+
+                        <label for="naslov">Naslov vijesti</label><br>
+                        <input type="text" name="naslov" id="naslov" ><br>
+                        <span id="error-naslov" class="text-danger"></span><br>
+                    
+
+                        <label for="kratki">Kratki sadržaj vijesti ( do 50 znakova)</label><br>
+                        <textarea name="kratki" id="kratki" maxlength="50"></textarea><br>
+                        <span id="error-kratki" class="text-danger"></span><br>
+
+
+                        <label for="sadrzaj">Sadržaj vijesti</label><br>
+
+                        <textarea name="sadrzaj" id="sadrzaj" ></textarea><br>
+                        <span id="error-sadrzaj" class="text-danger"></span><br>
+
+
+                         
+                        <label for="Slika">Slika:</label><br>
+                        <input type="file" id="Slika" name="Slika" accept="image/jpg" ><br>
+                        <span id="error-Slika" class="text-danger"></span><br>
+                       
+                        
+                        
+
+
+
+                        <label for="kategorija">Kategorija vijesti</label><br>
+                        <select name="kategorija" id="kategorija">
+                            <option value="">Odaberite kategoriju...</option>
+                            <option value="Rat u Ukrajini">Rat u Ukrajini</option>
+                            <option value="Pomracina mjeseca">Pomracina mjeseca</option>
+                            <option value="Obrazovanje">Obrazovanje</option>
+                            <option value="Izbori 2024">Izbori 2024</option>
+                          </select><br>
+                          <span id="error-kategorija" class="text-danger"></span><br>
+
+
+                          <label for="arhiva">Spremiti u arhivu:</label><br>
+                          <input type="checkbox" id="arhiva" name="arhiva"><br>
+                          <span id="error-arhiva" class="text-danger"></span><br>
+
+
+                          <input type="submit" name="submit" id="submit" value="Prihvati">
+                          <input type="reset" name="reset" id="reset" value="Poništi">
+                          <div id="error-message" class="text-danger"></div><br>
+                          
+ 
+
+
+
+                    </form>
+                    
+                </div>
+                
+    
+    
+    
+            </div>
+       
+    
+     </section>
+
+
+
+
+
+    <footer>
+        <div class="container kontakt">
+    
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" >
+                    <p> Lucija Blagojević</p>
+                    <p> lblagoje@tvz.hr</p>
+                    <p> 2024</p>
+                </div>
+                
+        
+            </div>
+    
+        </div>
+    
+    
+     </footer>
+
+
+
+
+
+
+     <script>
+        document.getElementById('submit').addEventListener('click', function(event) {
+            var naslov = document.getElementById('naslov').value.trim();
+            var kratki = document.getElementById('kratki').value.trim();
+            var sadrzaj = document.getElementById('sadrzaj').value.trim();
+            var slika = document.getElementById('Slika').value.trim();
+            var kategorija = document.getElementById('kategorija').value;
+            var arhiva = document.getElementById('arhiva').checked;
+
+            var isValid = true;
+
+            if (naslov.length < 5 || naslov.length > 30) {
+                isValid = false;
+                document.getElementById('error-naslov').innerText = 'Naslov mora imati između 5 i 30 znakova!';
+                document.getElementById('naslov').style.border = '2px solid red';
+            } else {
+                document.getElementById('error-naslov').innerText = '';
+            }
+
+            if (kratki.length < 10 || kratki.length > 100) {
+                isValid = false;
+                document.getElementById('error-kratki').innerText = 'Kratki sadržaj mora imati između 10 i 100 znakova!';
+                document.getElementById('kratki').style.border = '2px solid red';
+            } else {
+                document.getElementById('error-kratki').innerText = '';
+            }
+
+            if (sadrzaj.length === 0) {
+                isValid = false;
+                document.getElementById('error-sadrzaj').innerText = 'Sadržaj mora biti unesen!';
+                document.getElementById('sadrzaj').style.border = '2px solid red';
+            } else {
+                document.getElementById('error-sadrzaj').innerText = '';
+            }
+
+            if (slika === '') {
+                isValid = false;
+                document.getElementById('error-Slika').innerText = 'Slika mora biti unesena!';
+                document.getElementById('Slika').style.border = '2px solid red';
+            } else {
+                document.getElementById('error-Slika').innerText = '';
+            }
+
+            if (kategorija === '') {
+                isValid = false;
+                document.getElementById('error-kategorija').innerText = 'Kategorija mora biti odabrana!';
+                document.getElementById('kategorija').classList.add('error'); 
+                document.getElementById('kategorija').style.border = '2px solid red';
+            } else {
+                document.getElementById('error-kategorija').innerText = '';
+            }
+
+            if (!arhiva) {
+                isValid = false;
+                document.getElementById('error-arhiva').innerText = 'Označite da želite spremiti u arhivu.';
+                document.getElementById('arhiva').style.border = '2px solid red';
+            } else {
+                document.getElementById('error-arhiva').innerText = '';
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+                document.getElementById('error-message').innerText = 'Forma nije ispunjena!';
+                document.getElementById('message').style.border = '2px solid red';
+            } else {
+                document.getElementById('error-message').innerText = '';
+            }
+        });
+    </script>
+    
+
+</body>
+</html>
